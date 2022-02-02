@@ -85,8 +85,8 @@
 
 <!-- test modal buttons -->
 
-<button id="open-daily" data-target="daily-modal" class="button">Daily Report</button>
-<button id="open-weekly" data-target="weekly-modal" class="button">Weekly Report</button>
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button">Weekly Report</button>
 
 <!-- start of Daily Report modal -->
 
@@ -102,7 +102,7 @@
       Google Chart
     </section>
     <footer class="modal-card-foot">
-      <button class="button">Close</button>
+      <button class="modal-close button" aria-label="close">Close</button>
     </footer>
   </div>
 </div>
@@ -121,10 +121,12 @@
       Google Chart
     </section>
     <footer class="modal-card-foot">
-      <button class="button">Close</button>
+      <button class="modal-close button" aria-label="close">Close</button>
     </footer>
   </div>
 </div>
 
+<!-- links to js and 3rd party api's -->
+<script src="assets/js/script.js"></script>
 </body>
 </html>
