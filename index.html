@@ -5,6 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calorie Counter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- daily/weekly google charts code -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart for Daily Report when Charts is loaded.
+      google.charts.setOnLoadCallback(drawDailyChart);
+
+      // Draw the pie chart for Weekly Report when Charts is loaded.
+      google.charts.setOnLoadCallback(drawWeeklyChart);
+
+      // Callback that draws the pie chart for Daily Report.
+      function drawDailyChart() {
+
+        // Create the data table for the Daily Report.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Meal');
+        data.addColumn('number', 'Calories');
+        data.addRows([
+          ['Meal1', 500],
+          ['Meal2', 750],
+          ['Meal3', 950],
+          ['Snack', 200]
+        ]);
+
+        // Set options for Daily Report pie chart.
+        var options = {title:'Calories per Meal',
+                       width:400,
+                       height:300};
+
+        // Instantiate and draw the chart for the Daily Report.
+        var chart = new google.visualization.PieChart(document.getElementById('daily-report-div'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Anthony's pizza.
+      function drawAnthonyChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 2],
+          ['Onions', 2],
+          ['Olives', 2],
+          ['Zucchini', 0],
+          ['Pepperoni', 3]
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {title:'How Much Pizza Anthony Ate Last Night',
+                       width:400,
+                       height:300};
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Anthony_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 
@@ -98,7 +160,7 @@
     <section class="modal-card-body">
       Date display?</br>
       Met Calorie Goal?</br>
-      Google Chart
+      <div id="daily-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
       <button id="daily-close" class="button">Close</button>
