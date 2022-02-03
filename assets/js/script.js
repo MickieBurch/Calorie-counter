@@ -25,3 +25,19 @@ dailyClose.addEventListener("click", function() {
 weeklyClose.addEventListener("click", function() {
   weeklyReport.classList.remove('is-active');
 });
+
+
+
+
+// calorieninja calls
+var query = 'caloriesreturn'
+$.ajax({
+  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=steak&potato',
+  headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+  contentType: 'application/json',
+  success: function(result) {
+    console.log(result.items[0].calories);
+  },
+  error: function ajaxError(jqXHR) {
+    console.error('Error: ', jqXHR.responseText);
+}});
