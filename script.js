@@ -1,6 +1,6 @@
 
 document.getElementById("add-meal").addEventListener("click", addMeal);
-// document.getElementById("update-meal").addEventListener("click", updateMeal);
+//document.getElementById("update-meal").addEventListener("click", updateMeal);
 // document.getElementById("delete-meal").addEventListener("click", deleteMeal);
 // document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
 //document.getElementById("back").addEventListener("click", back);
@@ -42,6 +42,10 @@ function displayItems(){
 
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
+
+}
+
+function updateMeal(){
 
 }
 
@@ -101,7 +105,7 @@ const StorageCtrl = (function () {
     }
   
     //Returning all of the items listed above to track in local storage.
-    
+
     return {
       storeItem,
       getItemsFromStorage,
