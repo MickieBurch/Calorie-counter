@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calorie Counter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  </head>
+  <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+</head>
+
+
   <body>
   <section class="section">
     <div class="container">
@@ -25,25 +28,25 @@
         <form>
           <div >
             <label for="item-name" aria-placeholder="Enter meal">Meal</label>
-            <input type="text">
+            <input id="item-name" type="text">
           </div>
           <div>
             <label>Calories</label>
-            <input type="number"placeholder="Add Calories">
+            <input id="item-calories" type="number"placeholder="Add Calories">
 
 
             <!--Buttons to save meals, delete meals, ect-->
           </div>
           <div>
-            <button>
+            <button id="add-meal">
               <i> </i>Add a Meal</button>
-            <button type="button">
+            <button id="update-meal" type="button">
               <i> </i>Update Meal</button>
-            <button type="button">
+            <button id="delete-meal" type="button">
               <i> </i>Delete Meal</button>
-            <button type="button">
+            <button id="delete-all" type="button">
               <i> </i>Delete All</button>
-            <button type="button">
+            <button id="back" type="button">
               <i> </i>Back</button>
           </div>
 
@@ -55,22 +58,13 @@
     <div>
       <div>
           <h3>Total Calories:
-              <span>0</span>
+              <span id="total-calories">0</span>
             </h3>
       </div>
     </div>
     <!-- List of items -->
     <div>
-      <ul>
-        <li>
-          test
-        </li>
-        <li>
-          test
-        </li>
-        <li>
-          test
-        </li>
+      <ul id="item-list">
       </ul>
     </div>
   </div>
@@ -87,6 +81,7 @@
     <h2>Calorie Intake:</h2>
     <h2>Calorie Goal: </h2>
 </div>
+<script src="./script.js"></script>
 
 <!-- test modal buttons -->
 
