@@ -17,6 +17,11 @@ document.getElementById("add-meal").addEventListener("click", addMeal);
 var itemList = document.getElementById("item-list");
 
 
+$("#todaysDate").html(moment().format("LL"));
+
+$("#weekDate").html('Current Week');
+
+
 function addMeal(){
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
