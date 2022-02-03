@@ -45,8 +45,6 @@
               <i> </i>Delete Meal</button>
             <button id="delete-all" type="button">
               <i> </i>Delete All</button>
-            <button id="back" type="button">
-              <i> </i>Back</button>
           </div>
 
         </form>
@@ -80,7 +78,52 @@
     <h2>Calorie Intake:</h2>
     <h2>Calorie Goal: </h2>
 </div>
-<script src="./script.js"></script>
 
+<!-- test modal buttons -->
+
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button">Weekly Report</button>
+
+<!-- start of Daily Report modal -->
+
+<div id="daily-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Daily Report</p>
+    </header>
+    <section class="modal-card-body">
+      Date display?</br>
+      Met Calorie Goal?</br>
+      Google Chart
+    </section>
+    <footer class="modal-card-foot">
+      <button id="daily-close" class="button">Close</button>
+    </footer>
+  </div>
+</div>
+
+<!-- start of Weekly Report modal -->
+
+<div id="weekly-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Weekly Report</p>
+    </header>
+    <section class="modal-card-body">
+      Date display?</br>
+      Met Calorie Goal</br>
+      Google Chart
+    </section>
+    <footer class="modal-card-foot">
+      <button id="weekly-close" class="button">Close</button>
+    </footer>
+  </div>
+</div>
+
+<!-- links to js and 3rd party api's -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
