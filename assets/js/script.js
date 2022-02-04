@@ -35,16 +35,19 @@ function displayItems(){
   items = [];
   items = items = JSON.parse(localStorage.getItem('items'));
   var calories = 0;
-
+  
   items.forEach((item)=>{
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
     itemList.appendChild(li);
-    calories + item.itemCalories;
+    calories = calories + parseInt(item.itemCalories);
+    
   })
-
+  console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
+
+  
 
 }
 
