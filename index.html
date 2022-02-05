@@ -9,9 +9,7 @@
   <body>
     <section class="section has-background-light">
       <div class="container is-mobile">
-        <h1
-          class="title flex-wrap has-text-danger box is-italic has-text-centered column is-narrow is-mobile is-centered"
-        >
+        <h1 class="title flex-wrap has-text-danger box is-italic has-text-centered column is-narrow is-mobile is-centered">
           Calorie Counter
         </h1>
       </div>
@@ -22,23 +20,27 @@
 
       <div class="columns is-mobile">
         <div>
-          <h5
-            class="column flex-wrap is-underlined has-text-weight-semibold is-narrow is-mobile"
-          >
+          <h5 class="column flex-wrap is-underlined has-text-weight-semibold is-narrow is-mobile">
             Add Meal
           </h5>
           <form>
-            <div
-              class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
-            >
+            <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
               <label for="item-name">Meal</label>
-              <input type="text" />
+              <input type="text"
+              class="input is-danger is-rounded is-small"
+              style="width: 33%"
+              placeholder="Add a meal!" >
             </div>
             <div
               class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
             >
               <label>Calories</label>
-              <input type="number" placeholder="Add Calories" />
+              <input type="number"
+              class="input is-danger is-rounded is-small"
+              style="width: 33%"
+              type="text"
+              placeholder="Calorie Intake"
+            />
             </div>
             <div
               class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
@@ -72,22 +74,26 @@
         <div class="column flex-wrap is-narrow is-mobile is-centered">
           <section>THIS IS WHERE THE CALENDAR WILL GO</section>
         </div>
-
-        <div class="column flex-wrap is-narrow is-mobile is-centered">
+        </div>
+        <div class="columns"> 
+        <div class="column flex-wrap is-narrow has-text-weight-semibold is-mobile is-centered">
+          <label>Total:</label>
           <input
             class="input is-danger is-rounded is-small"
             style="width: 33%"
             type="text"
             placeholder="Calorie Intake"
           />
+          <label>Goal:</label>
           <input
             class="input is-danger is-rounded is-small"
             style="width: 33%"
-            type="text"
+            type="number"
             placeholder="Calorie Goal"
           />
         </div>
-      </div>
+        </div>
+      
 
 
     <div>
