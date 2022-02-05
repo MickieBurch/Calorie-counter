@@ -1,57 +1,93 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calorie Counter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-</head>
-
-
+  </head>
   <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        MEAL TRACKER
-      </h1>
-    </div>
-  </section>
-
-  
-  <div class="container mt-4">
-    <!-- Form -->
-
-    <div>
-      <div>
-        <h5>Add Meal</h5>
-        <form>
-          <div >
-            <label for="item-name" aria-placeholder="Enter meal">Meal</label>
-            <input id="item-name" type="text">
-          </div>
-          <div>
-            <label>Calories</label>
-            <input id="item-calories" type="number"placeholder="Add Calories">
-
-
-            <!--Buttons to save meals, delete meals, ect-->
-          </div>
-          <div>
-            <button id="add-meal">
-              <i> </i>Add a Meal</button>
-            <button id="update-meal" type="button">
-              <i> </i>Update Meal</button>
-            <button id="delete-meal" type="button">
-              <i> </i>Delete Meal</button>
-            <button id="delete-all" type="button">
-              <i> </i>Delete All</button>
-            <button id="back" type="button">
-              <i> </i>Back</button>
-          </div>
-
-        </form>
+    <section class="section has-background-light">
+      <div class="container is-mobile">
+        <h1
+          class="title flex-wrap has-text-danger box is-italic has-text-centered column is-narrow is-mobile is-centered"
+        >
+          Calorie Counter
+        </h1>
       </div>
-    </div>
+    </section>
+
+    <div class="p-10 mt-10 box is-mobile">
+      <!-- Form -->
+
+      <div class="columns is-mobile">
+        <div>
+          <h5
+            class="column flex-wrap is-underlined has-text-weight-semibold is-narrow is-mobile"
+          >
+            Add Meal
+          </h5>
+          <form>
+            <div
+              class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
+            >
+              <label for="item-name">Meal</label>
+              <input type="text" />
+            </div>
+            <div
+              class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
+            >
+              <label>Calories</label>
+              <input type="number" placeholder="Add Calories" />
+            </div>
+            <div
+              class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered"
+            >
+              <button class="button is-danger is-light is-small is-$white-ter">
+                <i> </i>Add Meal
+              </button>
+              <button class="button is-danger is-light is-small is-$white-ter">
+                <i> </i>Update Meal
+              </button>
+              <button class="button is-danger is-light is-small is-$white-ter">
+                <i> </i>Delete Meal
+              </button>
+              <button class="button is-danger is-light is-small is-$white-ter">
+                <i> </i>Delete All
+              </button>
+              <button class="button is-danger is-light is-small is-$white-ter">
+                <i> </i>Back
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div>
+          <ul class="column flex-wrap is-narrow is-mobile is-centered">
+            LIST HERE
+          </ul>
+        </div>
+
+        <div class="column flex-wrap is-narrow is-mobile is-centered">
+          <section>THIS IS WHERE THE CALENDAR WILL GO</section>
+        </div>
+
+        <div class="column flex-wrap is-narrow is-mobile is-centered">
+          <input
+            class="input is-danger is-rounded is-small"
+            style="width: 33%"
+            type="text"
+            placeholder="Calorie Intake"
+          />
+          <input
+            class="input is-danger is-rounded is-small"
+            style="width: 33%"
+            type="text"
+            placeholder="Calorie Goal"
+          />
+        </div>
+      </div>
 
 
     <div>
@@ -69,18 +105,47 @@
   </div>
 
 
+      <!-- test modal buttons -->
 
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button">Weekly Report</button>
 
-<div>
-    <section>THIS IS WHERE THE CALENDAR WILL GO</section>
+<!-- start of Daily Report modal -->
+
+<div id="daily-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Daily Report</p>
+    </header>
+    <section class="modal-card-body">
+      Date display?</br>
+      Met Calorie Goal?</br>
+      Google Chart
+    </section>
+    <footer class="modal-card-foot">
+      <button id="daily-close" class="button">Close</button>
+    </footer>
+  </div>
 </div>
+      <!-- start of Weekly Report modal -->
 
-
-<div>
-    <h2>Calorie Intake:</h2>
-    <h2>Calorie Goal: </h2>
+<div id="weekly-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Weekly Report</p>
+    </header>
+    <section class="modal-card-body">
+      Date display?</br>
+      Met Calorie Goal</br>
+      Google Chart
+    </section>
+    <footer class="modal-card-foot">
+      <button id="weekly-close" class="button">Close</button>
+    </footer>
+  </div>
 </div>
-<script src="./script.js"></script>
 
 <!-- test modal buttons -->
 
@@ -128,5 +193,6 @@
 <!-- links to js and 3rd party api's -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="assets/js/script.js"></script>
-</body>
+    </div>
+  </body>
 </html>
