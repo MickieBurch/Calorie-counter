@@ -3,8 +3,6 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
-console.log(dailyClose);
-console.log(weeklyClose);
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
@@ -46,6 +44,8 @@ function displayItems(){
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
+  dailyModTotalCal = document.getElementById("daily-calories");
+  dailyModTotalCal.innerText = calories;
 
   
 

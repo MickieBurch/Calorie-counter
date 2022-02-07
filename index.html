@@ -16,17 +16,18 @@
       google.charts.setOnLoadCallback(drawWeeklyChart);
 
       // Callback that draws the pie chart for Daily Report.
-      function drawDailyChart() {
+      function drawDailyChart(items = JSON.parse(localStorage.getItem('items'))) {
         // Create the data table for the Daily Report.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Meal');
         data.addColumn('number', 'Calories');
-        data.addRows([
-          ['Meal1', 500],
-          ['Meal2', 750],
-          ['Meal3', 950],
-          ['Snack', 200]
-        ]);
+        // loop over items and add them to rows
+        for (var i = 0; i < items.length; i++) {
+          console.log(items[i].itemName, items[i].itemCalories);
+          data.addRows([
+            [items[i].itemName, parseInt(items[i].itemCalories)]
+          ]);
+        }
         // Set options for Daily Report pie chart.
         var options = {title:'Calories per Meal',
                        width:400,
@@ -38,7 +39,8 @@
       }
 
       // Callback that draws the pie chart for Weekly Report.
-      function drawWeeklyChart() {
+      function drawWeeklyChart(items = JSON.parse(localStorage.getItem('items'))) {
+        console.log(items);
         // Create the data table for Weekly Report.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Day');
@@ -154,6 +156,7 @@
     <section class="modal-card-body">
       Date display?</br>
       Met Calorie Goal?</br>
+      <p>Total Calories: <span id="daily-calories"></span></p>
       <!-- daily report chart -->
       <div id="daily-report-div" style="border: 1px solid #ccc"></div>
     </section>
