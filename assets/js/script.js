@@ -40,7 +40,8 @@ $("#todaysDate").html(moment().format("LL"));
 
 $("#weekDate").html('Current Week');
 
-function addMeal(){
+function addMeal(event){
+event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
 
