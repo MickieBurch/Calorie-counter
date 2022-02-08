@@ -5,14 +5,15 @@ var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
 console.log(dailyClose);
 console.log(weeklyClose);
+let items = JSON.parse(localStorage.getItem('items'))?JSON.parse(localStorage.getItem('items')): []
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
 
 document.getElementById("add-meal").addEventListener("click", addMeal);
-// document.getElementById("update-meal").addEventListener("click", updateMeal);
-// document.getElementById("delete-meal").addEventListener("click", deleteMeal);
-// document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
+//document.getElementById("update-meal").addEventListener("click", updateMeal);
+//document.getElementById("delete-meal").addEventListener("click", deleteMeal);
+document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
 //document.getElementById("back").addEventListener("click", back);
 var itemList = document.getElementById("item-list");
 
@@ -31,15 +32,78 @@ function addMeal(){
   displayItems();
 }
 
+//FUNCTION FOR UPDATE MEAL 
+function updateMeal(){
+  taskButtonHandler.addEventListener("click",updateMeal)
+  console.log("update")
+
+  }
+  
+  //FUNCTION FOR deleteMeal
+  //ul.addEventListener("click", (event) =>{
+    //if(event.target.tagName === Button){
+      //const button = event.target;
+      //const li = button.parentNode;
+      //const ul = li.parentNode;
+      //if (button.textContent === "Delete Meal"){
+     //   ul.removeChild(li)
+      //}
+    //}
+  //})
+  
+  
+  //deleteAllMeals button 
+  function deleteAllMeals(){
+  var list = document.getElementById("item-list");
+  while(list.firstChild){
+  list.removeChild(list.firstChild);
+  
+}
+items = [] 
+localStorage.setItem('items', JSON.stringify(items));
+
+  }
+
+
+  
+
 function displayItems(){
   items = [];
   items = items = JSON.parse(localStorage.getItem('items'));
   var calories = 0;
-
+itemList.innerHTML = ""
   items.forEach((item)=>{
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
+    var deletebtn = document.createElement("button");
+    deletebtn.value = item.itemName
+    deletebtn.innerText = "delete"
+    var editBtn = document.createElement("button");
+    editBtn.innerText = "edit"
+    li.appendChild(deletebtn);
+    li.appendChild(editBtn); 
     itemList.appendChild(li);
+    deletebtn.addEventListener("click",function(event){
+      event.preventDefault()
+      console.log(event.target.value)
+      var removedItems = items.filter(item => {
+        console.log(item)
+        if (event.target.value !== item.itemName){
+          return item
+        }
+      })
+      console.log(removedItems)
+      items = removedItems
+      localStorage.setItem('items', JSON.stringify(items));
+      displayItems()
+
+    })
+
+    editBtn.addEventListener("click",function(){
+      console.log("edithit")
+
+      
+    })
     calories + item.itemCalories;
   })
 
