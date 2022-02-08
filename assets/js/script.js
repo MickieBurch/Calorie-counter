@@ -3,13 +3,14 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
+var mealInputEl = document.getElementById("item-name");
 console.log(dailyClose);
 console.log(weeklyClose);
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
 
-document.getElementById("add-meal").addEventListener("click", addMeal);
+document.getElementById("add-meal").addEventListener("click", getInput);
 // document.getElementById("update-meal").addEventListener("click", updateMeal);
 // document.getElementById("delete-meal").addEventListener("click", deleteMeal);
 // document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
@@ -17,10 +18,27 @@ document.getElementById("add-meal").addEventListener("click", addMeal);
 var itemList = document.getElementById("item-list");
 
 
+// calorieninja calls
+function getInput() {
+
+var calorieReturn = document.getElementById('item-name').value;
+
+  
+$.ajax({
+  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
+  headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+  contentType: 'application/json',
+  success: function(result) {
+    console.log(result.items[0].calories);
+  }
+  // error: function ajaxError(jqXHR) {
+  //   console.error('Error: ', jqXHR.responseText);
+});
+}
+
 $("#todaysDate").html(moment().format("LL"));
 
 $("#weekDate").html('Current Week');
-
 
 function addMeal(){
   mealName = document.getElementById("item-name").value;
@@ -140,11 +158,10 @@ const StorageCtrl = (function () {
     }
   })();
 
+  // calorieninja calls
 
-// calorieninja calls
-var query = 'caloriesreturn'
 $.ajax({
-  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=steak&potato',
+  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
   contentType: 'application/json',
   success: function(result) {
@@ -153,3 +170,4 @@ $.ajax({
   error: function ajaxError(jqXHR) {
     console.error('Error: ', jqXHR.responseText);
 }});
+
