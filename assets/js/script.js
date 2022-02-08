@@ -20,9 +20,9 @@ var itemList = document.getElementById("item-list");
 
 
 // calorieninja calls
-async function getInput(calorieReturn) {
+function getInput() {
 
-var apiresult;
+var calorieReturn = document.getElementById('item-name').value;
 
 $.ajax({
   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
@@ -30,50 +30,21 @@ $.ajax({
   contentType: 'application/json',
   success: function(result) {
     console.log(result.items[0].calories);
-    apiresult = result.items[0].calories;
-
-    async function addMeal(event){
-      event.preventDefault();
-        mealName = document.getElementById("item-name").value;
-        mealCalories = document.getElementById("item-calories").value;
-      
-        var item = {
-          "itemName": mealName,
-          "itemCalories": mealCalories
-        }
-        //debugger;
-        if (!mealCalories) {
-          var calledcalories = await getInput(mealName);
-          console.log(typeof(calledcalories));
-      
-        }
-        //myStoreItem(item);
-        StorageCtrl.storeItem(item);
-        displayItems();
-      }
-      
-      //FUNCTION FOR UPDATE MEAL 
-      function updateMeal(){
-        taskButtonHandler.addEventListener("click",updateMeal)
-        console.log("update")
-      
-        }
-    
+    $("#item-calories").html(result.items[0].calories).value;
   },
   error: function ajaxError(jqXHR) {
   console.error('Error: ', jqXHR.responseText);
 }});
-return apiresult
 }
-
-
+getInput();
 
 $("#todaysDate").html(moment().format("LL"));
 
 $("#weekDate").html('Current Week');
 
-async function addMeal(event){
-event.preventDefault();
+function addMeal(event){
+  getInput();
+  event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
 
@@ -81,23 +52,18 @@ event.preventDefault();
     "itemName": mealName,
     "itemCalories": mealCalories
   }
-  //debugger;
-  if (!mealCalories) {
-    var calledcalories = await getInput(mealName);
-    console.log(typeof(calledcalories));
 
-  }
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
   displayItems();
 }
 
 //FUNCTION FOR UPDATE MEAL 
-function updateMeal(){
-  taskButtonHandler.addEventListener("click",updateMeal)
-  console.log("update")
+// function updateMeal(){
+//   taskButtonHandler.addEventListener("click",updateMeal)
+//   console.log("update")
 
-  }
+//   }
   
   //FUNCTION FOR deleteMeal
   //ul.addEventListener("click", (event) =>{
@@ -131,11 +97,7 @@ function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
-<<<<<<< HEAD
-  
-=======
 itemList.innerHTML = ""
->>>>>>> main
   items.forEach((item)=>{
   
     var li = document.createElement("li");
@@ -148,10 +110,6 @@ itemList.innerHTML = ""
     li.appendChild(deletebtn);
     li.appendChild(editBtn); 
     itemList.appendChild(li);
-<<<<<<< HEAD
-    calories = calories + parseInt(item.itemCalories);
-    
-=======
     deletebtn.addEventListener("click",function(event){
       event.preventDefault()
       console.log(event.target.value)
@@ -165,16 +123,13 @@ itemList.innerHTML = ""
       items = removedItems
       localStorage.setItem('items', JSON.stringify(items));
       displayItems()
-
     })
-
     editBtn.addEventListener("click",function(){
       console.log("edithit")
 
       
     })
     calories + item.itemCalories;
->>>>>>> main
   })
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
@@ -285,4 +240,3 @@ const StorageCtrl = (function () {
 //   error: function ajaxError(jqXHR) {
 //     console.error('Error: ', jqXHR.responseText);
 // }});
-
