@@ -20,9 +20,9 @@ var itemList = document.getElementById("item-list");
 
 
 // calorieninja calls
-function getInput() {
+async function getInput(calorieReturn) {
 
-var calorieReturn = document.getElementById('item-name').value;
+var apiresult;
 
 $.ajax({
   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
@@ -30,17 +30,22 @@ $.ajax({
   contentType: 'application/json',
   success: function(result) {
     console.log(result.items[0].calories);
+    apiresult = result.items[0].calories;
+    
   },
   error: function ajaxError(jqXHR) {
   console.error('Error: ', jqXHR.responseText);
 }});
+return apiresult
 }
+
+
 
 $("#todaysDate").html(moment().format("LL"));
 
 $("#weekDate").html('Current Week');
 
-function addMeal(event){
+async function addMeal(event){
 event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
@@ -49,7 +54,12 @@ event.preventDefault();
     "itemName": mealName,
     "itemCalories": mealCalories
   }
+  //debugger;
+  if (!mealCalories) {
+    var calledcalories = await getInput(mealName);
+    console.log(typeof(calledcalories));
 
+  }
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
   displayItems();
