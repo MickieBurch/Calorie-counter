@@ -101,6 +101,8 @@ itemList.innerHTML = ""
 
     editBtn.addEventListener("click",function(){
       console.log("edithit")
+
+      
     })
     calories + item.itemCalories;
   })
