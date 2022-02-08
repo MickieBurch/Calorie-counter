@@ -23,17 +23,16 @@ function getInput() {
 
 var calorieReturn = document.getElementById('item-name').value;
 
-  
 $.ajax({
   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
   contentType: 'application/json',
   success: function(result) {
     console.log(result.items[0].calories);
-  }
-  // error: function ajaxError(jqXHR) {
-  //   console.error('Error: ', jqXHR.responseText);
-});
+  },
+  error: function ajaxError(jqXHR) {
+  console.error('Error: ', jqXHR.responseText);
+}});
 }
 
 $("#todaysDate").html(moment().format("LL"));
@@ -56,10 +55,11 @@ function addMeal(){
 
 function displayItems(){
   items = [];
-  items = items = JSON.parse(localStorage.getItem('items'));
+  if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
 
   items.forEach((item)=>{
+  
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
     itemList.appendChild(li);
@@ -160,14 +160,14 @@ const StorageCtrl = (function () {
 
   // calorieninja calls
 
-$.ajax({
-  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
-  headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
-  contentType: 'application/json',
-  success: function(result) {
-    console.log(result.items[0].calories);
-  },
-  error: function ajaxError(jqXHR) {
-    console.error('Error: ', jqXHR.responseText);
-}});
+// $.ajax({
+//   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
+//   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+//   contentType: 'application/json',
+//   success: function(result) {
+//     console.log(result.items[0].calories);
+//   },
+//   error: function ajaxError(jqXHR) {
+//     console.error('Error: ', jqXHR.responseText);
+// }});
 
