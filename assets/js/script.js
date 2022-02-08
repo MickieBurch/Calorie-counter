@@ -3,13 +3,10 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
-<<<<<<< HEAD
-=======
 var mealInputEl = document.getElementById("item-name");
 console.log(dailyClose);
 console.log(weeklyClose);
 let items = JSON.parse(localStorage.getItem('items'))?JSON.parse(localStorage.getItem('items')): []
->>>>>>> main
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
