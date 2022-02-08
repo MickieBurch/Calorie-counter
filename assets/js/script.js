@@ -31,6 +31,33 @@ $.ajax({
   success: function(result) {
     console.log(result.items[0].calories);
     apiresult = result.items[0].calories;
+
+    async function addMeal(event){
+      event.preventDefault();
+        mealName = document.getElementById("item-name").value;
+        mealCalories = document.getElementById("item-calories").value;
+      
+        var item = {
+          "itemName": mealName,
+          "itemCalories": mealCalories
+        }
+        //debugger;
+        if (!mealCalories) {
+          var calledcalories = await getInput(mealName);
+          console.log(typeof(calledcalories));
+      
+        }
+        //myStoreItem(item);
+        StorageCtrl.storeItem(item);
+        displayItems();
+      }
+      
+      //FUNCTION FOR UPDATE MEAL 
+      function updateMeal(){
+        taskButtonHandler.addEventListener("click",updateMeal)
+        console.log("update")
+      
+        }
     
   },
   error: function ajaxError(jqXHR) {
