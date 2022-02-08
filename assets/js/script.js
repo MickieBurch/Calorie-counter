@@ -131,7 +131,11 @@ function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
+<<<<<<< HEAD
+  
+=======
 itemList.innerHTML = ""
+>>>>>>> main
   items.forEach((item)=>{
   
     var li = document.createElement("li");
@@ -144,6 +148,10 @@ itemList.innerHTML = ""
     li.appendChild(deletebtn);
     li.appendChild(editBtn); 
     itemList.appendChild(li);
+<<<<<<< HEAD
+    calories = calories + parseInt(item.itemCalories);
+    
+=======
     deletebtn.addEventListener("click",function(event){
       event.preventDefault()
       console.log(event.target.value)
@@ -166,10 +174,15 @@ itemList.innerHTML = ""
       
     })
     calories + item.itemCalories;
+>>>>>>> main
   })
-
+  console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
+  dailyCalSpan = document.getElementById("daily-calories");
+  dailyCalSpan.innerText = calories;
+
+  
 
 }
 

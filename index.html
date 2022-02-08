@@ -6,6 +6,65 @@
     <title>Calorie Counter</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- daily/weekly google charts code -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+      // Draw the pie chart for Daily Report when Charts is loaded.
+      google.charts.setOnLoadCallback(drawDailyChart);
+      // Draw the pie chart for Weekly Report when Charts is loaded.
+      google.charts.setOnLoadCallback(drawWeeklyChart);
+
+      // Callback that draws the pie chart for Daily Report.
+      function drawDailyChart(items = JSON.parse(localStorage.getItem('items'))) {
+        // Create the data table for the Daily Report.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Meal');
+        data.addColumn('number', 'Calories');
+        // loop over items and add them to rows
+        for (var i = 0; i < items.length; i++) {
+          console.log(items[i].itemName, items[i].itemCalories);
+          data.addRows([
+            [items[i].itemName, parseInt(items[i].itemCalories)]
+          ]);
+        }
+        // Set options for Daily Report pie chart.
+        var options = {title:'Calories per Meal',
+                       width:400,
+                       height:300,
+                       pieHole: 0.4};
+        // Instantiate and draw the chart for the Daily Report.
+        var chart = new google.visualization.PieChart(document.getElementById('daily-report-div'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Weekly Report.
+      function drawWeeklyChart(items = JSON.parse(localStorage.getItem('items'))) {
+        console.log(items);
+        // Create the data table for Weekly Report.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Day');
+        data.addColumn('number', 'Calories');
+        data.addRows([
+          ['Monday', 1500],
+          ['Tuesday', 1600],
+          ['Wednesday', 1650],
+          ['Thursday', 1600],
+          ['Friday', 1850],
+          ['Saturday', 2000],
+          ['Sunday', 2500]
+        ]);
+        // Set options for the Weekly Report pie chart.
+        var options = {title:'Total Calories Consumed per Day',
+                       width:400,
+                       height:300,
+                       pieHole: 0.4};
+        // Instantiate and draw the chart for the Weekly Report.
+        var chart = new google.visualization.PieChart(document.getElementById('weekly-report-div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 
@@ -86,7 +145,9 @@
     <section class="modal-card-body">
       <p id="todaysDate"></p>
       Met Calorie Goal?</br>
-      Google Chart
+      <p>Total Calories: <span id="daily-calories"></span></p>
+      <!-- daily report chart -->
+      <div id="daily-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
       <button id="daily-close" class="button">Close</button>
@@ -106,7 +167,8 @@
       <p id="weekDate"></p>
       Date display?</br>
       Met Calorie Goal</br>
-      Google Chart
+      <!-- weekly report chart -->
+      <div id="weekly-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
       <button id="weekly-close" class="button">Close</button>
