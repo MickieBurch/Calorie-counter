@@ -3,19 +3,48 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
+<<<<<<< HEAD
+=======
+var mealInputEl = document.getElementById("item-name");
+console.log(dailyClose);
+console.log(weeklyClose);
+let items = JSON.parse(localStorage.getItem('items'))?JSON.parse(localStorage.getItem('items')): []
+>>>>>>> main
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
 
 document.getElementById("add-meal").addEventListener("click", addMeal);
-// document.getElementById("update-meal").addEventListener("click", updateMeal);
-// document.getElementById("delete-meal").addEventListener("click", deleteMeal);
-// document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
+//document.getElementById("update-meal").addEventListener("click", updateMeal);
+//document.getElementById("delete-meal").addEventListener("click", deleteMeal);
+document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
 //document.getElementById("back").addEventListener("click", back);
 var itemList = document.getElementById("item-list");
 
 
-function addMeal(){
+// calorieninja calls
+function getInput() {
+
+var calorieReturn = document.getElementById('item-name').value;
+
+$.ajax({
+  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
+  headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+  contentType: 'application/json',
+  success: function(result) {
+    console.log(result.items[0].calories);
+  },
+  error: function ajaxError(jqXHR) {
+  console.error('Error: ', jqXHR.responseText);
+}});
+}
+
+$("#todaysDate").html(moment().format("LL"));
+
+$("#weekDate").html('Current Week');
+
+function addMeal(event){
+event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
 
@@ -29,17 +58,89 @@ function addMeal(){
   displayItems();
 }
 
+//FUNCTION FOR UPDATE MEAL 
+function updateMeal(){
+  taskButtonHandler.addEventListener("click",updateMeal)
+  console.log("update")
+
+  }
+  
+  //FUNCTION FOR deleteMeal
+  //ul.addEventListener("click", (event) =>{
+    //if(event.target.tagName === Button){
+      //const button = event.target;
+      //const li = button.parentNode;
+      //const ul = li.parentNode;
+      //if (button.textContent === "Delete Meal"){
+     //   ul.removeChild(li)
+      //}
+    //}
+  //})
+  
+  
+  //deleteAllMeals button 
+  function deleteAllMeals(){
+  var list = document.getElementById("item-list");
+  while(list.firstChild){
+  list.removeChild(list.firstChild);
+  
+}
+items = [] 
+localStorage.setItem('items', JSON.stringify(items));
+
+  }
+
+
+  
+
 function displayItems(){
   items = [];
-  items = items = JSON.parse(localStorage.getItem('items'));
+  if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
+<<<<<<< HEAD
   
+=======
+itemList.innerHTML = ""
+>>>>>>> main
   items.forEach((item)=>{
+  
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
+    var deletebtn = document.createElement("button");
+    deletebtn.value = item.itemName
+    deletebtn.innerText = "delete"
+    var editBtn = document.createElement("button");
+    editBtn.innerText = "edit"
+    li.appendChild(deletebtn);
+    li.appendChild(editBtn); 
     itemList.appendChild(li);
+<<<<<<< HEAD
     calories = calories + parseInt(item.itemCalories);
     
+=======
+    deletebtn.addEventListener("click",function(event){
+      event.preventDefault()
+      console.log(event.target.value)
+      var removedItems = items.filter(item => {
+        console.log(item)
+        if (event.target.value !== item.itemName){
+          return item
+        }
+      })
+      console.log(removedItems)
+      items = removedItems
+      localStorage.setItem('items', JSON.stringify(items));
+      displayItems()
+
+    })
+
+    editBtn.addEventListener("click",function(){
+      console.log("edithit")
+
+      
+    })
+    calories + item.itemCalories;
+>>>>>>> main
   })
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
@@ -138,16 +239,16 @@ const StorageCtrl = (function () {
     }
   })();
 
+  // calorieninja calls
 
-// calorieninja calls
-var query = 'caloriesreturn'
-$.ajax({
-  method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=steak&potato',
-  headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
-  contentType: 'application/json',
-  success: function(result) {
-    console.log(result.items[0].calories);
-  },
-  error: function ajaxError(jqXHR) {
-    console.error('Error: ', jqXHR.responseText);
-}});
+// $.ajax({
+//   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
+//   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+//   contentType: 'application/json',
+//   success: function(result) {
+//     console.log(result.items[0].calories);
+//   },
+//   error: function ajaxError(jqXHR) {
+//     console.error('Error: ', jqXHR.responseText);
+// }});
+
