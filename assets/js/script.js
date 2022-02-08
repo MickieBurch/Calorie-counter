@@ -44,8 +44,8 @@ function displayItems(){
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
-  dailyModTotalCal = document.getElementById("daily-calories");
-  dailyModTotalCal.innerText = calories;
+  dailyCalSpan = document.getElementById("daily-calories");
+  dailyCalSpan.innerText = calories;
 
   
 
