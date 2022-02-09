@@ -76,7 +76,7 @@ function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
-  itemList.innerHTML = ""
+itemList.innerHTML = ""
   items.forEach((item)=>{
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
@@ -117,6 +117,7 @@ function displayItems(){
 // modal click listeners
 // daily open
 dailyBtn.addEventListener("click", function() {
+  drawDailyChart();
   dailyReport.classList.add('is-active');
 });
 // weekly open
