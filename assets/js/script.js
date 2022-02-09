@@ -3,13 +3,10 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
-<<<<<<< HEAD
-=======
 var mealInputEl = document.getElementById("item-name");
 console.log(dailyClose);
 console.log(weeklyClose);
 let items = JSON.parse(localStorage.getItem('items'))?JSON.parse(localStorage.getItem('items')): []
->>>>>>> main
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
@@ -97,11 +94,7 @@ function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
-<<<<<<< HEAD
-  
-=======
 itemList.innerHTML = ""
->>>>>>> main
   items.forEach((item)=>{
   
     var li = document.createElement("li");
@@ -114,10 +107,6 @@ itemList.innerHTML = ""
     li.appendChild(deletebtn);
     li.appendChild(editBtn); 
     itemList.appendChild(li);
-<<<<<<< HEAD
-    calories = calories + parseInt(item.itemCalories);
-    
-=======
     deletebtn.addEventListener("click",function(event){
       event.preventDefault()
       console.log(event.target.value)
@@ -139,8 +128,7 @@ itemList.innerHTML = ""
 
       
     })
-    calories + item.itemCalories;
->>>>>>> main
+    calories = calories + parseInt(item.itemCalories);
   })
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
@@ -155,6 +143,7 @@ itemList.innerHTML = ""
 // modal click listeners
 // daily open
 dailyBtn.addEventListener("click", function() {
+  drawDailyChart();
   dailyReport.classList.add('is-active');
 });
 // weekly open
