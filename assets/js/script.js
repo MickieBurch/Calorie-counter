@@ -32,11 +32,6 @@ $.ajax({
   console.error('Error: ', jqXHR.responseText);
 }});
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
 $("#todaysDate").html(moment().format("LL"));
 $("#weekDate").html('Current Week');
 function addMeal(event){
@@ -48,31 +43,15 @@ function addMeal(event){
     "itemName": mealName,
     "itemCalories": mealCalories
   }
-<<<<<<< HEAD
-  
-
-=======
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
   displayItems();
 }
-<<<<<<< HEAD
-
-//FUNCTION FOR UPDATE MEAL 
-// function updateMeal(){
-//   taskButtonHandler.addEventListener("click",updateMeal)
-//   console.log("update")
-
-//   }
-  
-=======
 //FUNCTION FOR UPDATE MEAL
 function updateMeal(){
   taskButtonHandler.addEventListener("click",updateMeal)
   console.log("update")
   }
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
   //FUNCTION FOR deleteMeal
   //ul.addEventListener("click", (event) =>{
     //if(event.target.tagName === Button){
@@ -97,11 +76,7 @@ function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
-<<<<<<< HEAD
-itemList.innerHTML = ""
-=======
   itemList.innerHTML = ""
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
   items.forEach((item)=>{
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
@@ -131,11 +106,7 @@ itemList.innerHTML = ""
     editBtn.addEventListener("click",function(){
       console.log("edithit")
     })
-<<<<<<< HEAD
-    calories + item.itemCalories;
-=======
     calories = calories + parseInt(item.itemCalories);
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
   })
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
@@ -220,14 +191,6 @@ const StorageCtrl = (function () {
       deleteAllFromStorage
     }
   })();
-<<<<<<< HEAD
-
-  
-
-
-
-=======
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
   // calorieninja calls
 // $.ajax({
 //   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
@@ -238,10 +201,6 @@ const StorageCtrl = (function () {
 //   },
 //   error: function ajaxError(jqXHR) {
 //     console.error('Error: ', jqXHR.responseText);
-<<<<<<< HEAD
-// }});
-=======
 // }});
 
 
->>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
