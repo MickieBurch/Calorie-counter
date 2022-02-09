@@ -12,6 +12,7 @@ var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
 
 document.getElementById("add-meal").addEventListener("click", addMeal);
+
 //document.getElementById("update-meal").addEventListener("click", updateMeal);
 //document.getElementById("delete-meal").addEventListener("click", deleteMeal);
 document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
@@ -30,13 +31,13 @@ $.ajax({
   contentType: 'application/json',
   success: function(result) {
     console.log(result.items[0].calories);
-    $("#item-calories").html(result.items[0].calories).value;
+    $("#item-calories").val(result.items[0].calories);
   },
   error: function ajaxError(jqXHR) {
   console.error('Error: ', jqXHR.responseText);
 }});
 }
-getInput();
+
 
 $("#todaysDate").html(moment().format("LL"));
 
@@ -52,6 +53,7 @@ function addMeal(event){
     "itemName": mealName,
     "itemCalories": mealCalories
   }
+  
 
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
@@ -102,6 +104,7 @@ itemList.innerHTML = ""
   
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
+    $('#item-calories').value = '';
     var deletebtn = document.createElement("button");
     deletebtn.value = item.itemName
     deletebtn.innerText = "delete"
@@ -227,6 +230,10 @@ const StorageCtrl = (function () {
       deleteAllFromStorage
     }
   })();
+
+  
+
+
 
   // calorieninja calls
 
