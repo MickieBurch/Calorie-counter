@@ -81,34 +81,33 @@
   <div class="container p-10 mt-10 box is-mobile">
     <!-- Form -->
 
-    <div class="columns is-mobile">
+    <div class="is-mobile">
       <div>
         <form>
           <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
             <label for="item-name" aria-placeholder="Enter meal">Meal</label>
             <input id="item-name" type="text" class="input is-danger is-rounded is-small"
-            style="width: 66%"
+            style="width: 29%"
             placeholder="Add a meal!">
-          </div>
-          <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
+
             <label>Calories</label>
             <input id="item-calories" class="input is-danger is-rounded is-small"
-            style="width: 66%"
+            style="width: 31%"
             type="number"
-            placeholder="Input Calories!">
+            placeholder="Add Calories!">
           </div>
 
             <!--Buttons to save meals, delete meals, ect-->
           </div>
-          <div>
-            <button id="add-meal" class="button is-danger is-light is-normal is-$white-ter">
+          <div class="is-mobile">
+            <button id="add-meal" class="button is-fullwidth is-danger is-light is-normal is-$white-ter">
               <i> </i>Add a Meal</button>
-            <button id="delete-all" class="button is-danger is-light is-normal is-$white-ter">
+            <button id="delete-all" class="button is-fullwidth is-danger is-light is-normal is-$white-ter">
               <i> </i>Delete All</button>
           </div>
-
         </form>
       </div>
+      
 
 
 
@@ -132,7 +131,7 @@
       <ul id="item-list">
       </ul>
     </div>
-  </div>
+ 
 
 
 
@@ -143,8 +142,8 @@
 
 <!-- test modal buttons -->
 
-<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button is-danger is-light is-normal is-$white-ter">Daily Report</button>
-<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-danger is-light is-normal is-$white-ter">Weekly Report</button>
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button is-fullwidth is-danger is-light is-normal is-$white-ter">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-fullwidth is-danger is-light is-normal is-$white-ter">Weekly Report</button>
 
 <!-- start of Daily Report modal -->
 
@@ -166,7 +165,7 @@
     </footer>
   </div>
 </div>
-
+ </div>
 <!-- start of Weekly Report modal -->
 
 <div id="weekly-modal" class="modal">
