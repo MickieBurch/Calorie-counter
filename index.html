@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- daily/weekly google charts code -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       // Load Charts and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
@@ -64,48 +64,73 @@
         var chart = new google.visualization.PieChart(document.getElementById('weekly-report-div'));
         chart.draw(data, options);
       }
-    </script>
+    </script> 
 </head>
 
 
   <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        MEAL TRACKER
+  <section class="section has-background-light">
+    <div class="container is-mobile flex-wrap box is-italic has-text-centered column is-narrow is-mobile is-centered">
+      <h1 class="title has-text-danger">
+        Calorie Counter
       </h1>
     </div>
   </section>
 
   
-  <div class="container mt-4">
+  <div class="container p-10 mt-10 box is-mobile">
     <!-- Form -->
 
-    <div>
+    <div class="is-mobile">
       <div>
+<<<<<<< HEAD
        
+=======
+>>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
         <form>
-          <div >
+          <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
             <label for="item-name" aria-placeholder="Enter meal">Meal</label>
+<<<<<<< HEAD
             <input id="item-name" type="text">
           </div>
           <div>
             <label>Calories</label>
             <input id="item-calories"  type="number"placeholder="Add Calories">
+=======
+            <input id="item-name" type="text" class="input is-danger is-rounded is-small"
+            style="width: 29%"
+            placeholder="Add a meal!">
+>>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
 
+            <label>Calories</label>
+            <input id="item-calories" class="input is-danger is-rounded is-small"
+            style="width: 31%"
+            type="number"
+            placeholder="Add Calories!">
+          </div>
 
             <!--Buttons to save meals, delete meals, ect-->
           </div>
+<<<<<<< HEAD
           <!-- </div> -->
           <div>
             <button id="add-meal">
+=======
+          <div class="is-mobile">
+            <button id="add-meal" class="button is-fullwidth is-danger is-normal is-outlined is-$white-ter has-text-weight-bold">
+>>>>>>> 532e9d340ab3873ab041ca6f9cd68b201c934a58
               <i> </i>Add a Meal</button>
-            <button id="delete-all" type="button">
+            <button id="delete-all" class="button is-fullwidth is-danger is-normal is-outlined is-$white-ter has-text-weight-bold">
               <i> </i>Delete All</button>
           </div>
-
         </form>
       </div>
+      
+    
+    <!-- List of items -->
+    <div>
+      <ul>
+      </ul>
     </div>
 
 
@@ -121,10 +146,7 @@
       <ul id="item-list">
       </ul>
     </div>
-  </div>
-
-
-
+ 
 <div>
     <h2>Calorie Intake:</h2>
     <h2>Calorie Goal: </h2>
@@ -132,16 +154,16 @@
 
 <!-- test modal buttons -->
 
-<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button">Daily Report</button>
-<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button">Weekly Report</button>
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button is-outlined is-fullwidth is-danger is-normal is-$white-ter has-text-weight-bold">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-outlined is-fullwidth is-danger is-normal is-$white-ter has-text-weight-bold">Weekly Report</button>
 
 <!-- start of Daily Report modal -->
 
-<div id="daily-modal" class="modal">
+<div id="daily-modal" class="modal is-mobile">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Daily Report</p>
+    <header class="modal-card-head has-background-danger">
+      <p class="modal-card-title has-text-white has-text-centered has-text-weight-bold">Daily Report</p>
     </header>
     <section class="modal-card-body">
       <p id="todaysDate"></p>
@@ -151,18 +173,18 @@
       <div id="daily-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
-      <button id="daily-close" class="button">Close</button>
+      <button id="daily-close" class="button is-danger is-rounded is-fullwidth has-text-weight-bold">Close</button>
     </footer>
   </div>
 </div>
-
+ </div>
 <!-- start of Weekly Report modal -->
 
 <div id="weekly-modal" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Weekly Report</p>
+    <header class="modal-card-head has-background-danger">
+      <p class="modal-card-title has-text-white has-text-centered has-text-weight-bold">Weekly Report</p>
     </header>
     <section class="modal-card-body">
       <p id="weekDate"></p>
@@ -172,11 +194,12 @@
       <div id="weekly-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
-      <button id="weekly-close" class="button">Close</button>
+      <button id="weekly-close" class="button is-danger is-rounded is-fullwidth has-text-weight-bold">Close</button>
     </footer>
   </div>
-</div>
 
+</div>
+  </div>
 <!-- links to js and 3rd party api's -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
