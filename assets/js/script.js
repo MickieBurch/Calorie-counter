@@ -3,30 +3,22 @@ var dailyBtn = document.getElementById("open-daily");
 var weeklyBtn = document.getElementById("open-weekly");
 var dailyClose = document.getElementById("daily-close");
 var weeklyClose = document.getElementById("weekly-close");
-<<<<<<< HEAD
-=======
 var mealInputEl = document.getElementById("item-name");
 console.log(dailyClose);
 console.log(weeklyClose);
 let items = JSON.parse(localStorage.getItem('items'))?JSON.parse(localStorage.getItem('items')): []
->>>>>>> main
 // grab modal elements
 var dailyReport = document.getElementById("daily-modal");
 var weeklyReport = document.getElementById("weekly-modal");
-
 document.getElementById("add-meal").addEventListener("click", addMeal);
 //document.getElementById("update-meal").addEventListener("click", updateMeal);
 //document.getElementById("delete-meal").addEventListener("click", deleteMeal);
 document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
 //document.getElementById("back").addEventListener("click", back);
 var itemList = document.getElementById("item-list");
-
-
 // calorieninja calls
 function getInput() {
-
 var calorieReturn = document.getElementById('item-name').value;
-
 $.ajax({
   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
@@ -38,33 +30,25 @@ $.ajax({
   console.error('Error: ', jqXHR.responseText);
 }});
 }
-
 $("#todaysDate").html(moment().format("LL"));
-
 $("#weekDate").html('Current Week');
-
 function addMeal(event){
 event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
-
   var item = {
     "itemName": mealName,
     "itemCalories": mealCalories
   }
-
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
   displayItems();
 }
-
-//FUNCTION FOR UPDATE MEAL 
+//FUNCTION FOR UPDATE MEAL
 function updateMeal(){
   taskButtonHandler.addEventListener("click",updateMeal)
   console.log("update")
-
   }
-  
   //FUNCTION FOR deleteMeal
   //ul.addEventListener("click", (event) =>{
     //if(event.target.tagName === Button){
@@ -76,34 +60,21 @@ function updateMeal(){
       //}
     //}
   //})
-  
-  
-  //deleteAllMeals button 
+  //deleteAllMeals button
   function deleteAllMeals(){
   var list = document.getElementById("item-list");
   while(list.firstChild){
   list.removeChild(list.firstChild);
-  
 }
-items = [] 
+items = []
 localStorage.setItem('items', JSON.stringify(items));
-
   }
-
-
-  
-
 function displayItems(){
   items = [];
   if (localStorage.getItem('items')){items = JSON.parse(localStorage.getItem('items'));}
   var calories = 0;
-<<<<<<< HEAD
-  
-=======
-itemList.innerHTML = ""
->>>>>>> main
+  itemList.innerHTML = ""
   items.forEach((item)=>{
-  
     var li = document.createElement("li");
     li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
     var deletebtn = document.createElement("button");
@@ -112,12 +83,8 @@ itemList.innerHTML = ""
     var editBtn = document.createElement("button");
     editBtn.innerText = "edit"
     li.appendChild(deletebtn);
-    li.appendChild(editBtn); 
+    li.appendChild(editBtn);
     itemList.appendChild(li);
-<<<<<<< HEAD
-    calories = calories + parseInt(item.itemCalories);
-    
-=======
     deletebtn.addEventListener("click",function(event){
       event.preventDefault()
       console.log(event.target.value)
@@ -131,27 +98,18 @@ itemList.innerHTML = ""
       items = removedItems
       localStorage.setItem('items', JSON.stringify(items));
       displayItems()
-
     })
-
     editBtn.addEventListener("click",function(){
       console.log("edithit")
-
-      
     })
-    calories + item.itemCalories;
->>>>>>> main
+    calories = calories + parseInt(item.itemCalories);
   })
   console.log(typeof(calories));
   totalCaloriesSpan = document.getElementById("total-calories");
   totalCaloriesSpan.innerText = calories;
   dailyCalSpan = document.getElementById("daily-calories");
   dailyCalSpan.innerText = calories;
-
-  
-
 }
-
 // modal click listeners
 // daily open
 dailyBtn.addEventListener("click", function() {
@@ -168,14 +126,11 @@ dailyClose.addEventListener("click", function() {
 weeklyClose.addEventListener("click", function() {
   weeklyReport.classList.remove('is-active');
 });
-
-
 //When the page loads / refreshes
 document.addEventListener("DOMContentLoaded", function() {
-  // 
+  //
   displayItems();
 });
-
 //Storage controller
 const StorageCtrl = (function () {
     storeItem: function storeItem(item) {
@@ -213,23 +168,17 @@ const StorageCtrl = (function () {
       })
       localStorage.setItem('items', JSON.stringify(items));
     }
-  
-
     //Updating the information inputed into local storage.
     updateItemFromStorage: function updateItemFromStorage() {
       let items = ItemCtrl.data.items;
       localStorage.setItem('items', JSON.stringify(items));
     }
-  
     //Clearing out ALL information from storage if user selects delete all.
-
     deleteAllFromStorage: function deleteAllFromStorage() {
       localStorage.removeItem('items');
       ItemCtrl.nullifyTotalCallories();
     }
-  
     //Returning all of the items listed above to track in local storage.
-    
     return {
       storeItem,
       getItemsFromStorage,
@@ -238,9 +187,7 @@ const StorageCtrl = (function () {
       deleteAllFromStorage
     }
   })();
-
   // calorieninja calls
-
 // $.ajax({
 //   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=tomato',
 //   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
@@ -251,4 +198,5 @@ const StorageCtrl = (function () {
 //   error: function ajaxError(jqXHR) {
 //     console.error('Error: ', jqXHR.responseText);
 // }});
+
 

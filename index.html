@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- daily/weekly google charts code -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       // Load Charts and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
@@ -64,47 +64,59 @@
         var chart = new google.visualization.PieChart(document.getElementById('weekly-report-div'));
         chart.draw(data, options);
       }
-    </script>
+    </script> 
 </head>
 
 
   <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        MEAL TRACKER
+  <section class="section has-background-light">
+    <div class="container is-mobile flex-wrap box is-italic has-text-centered column is-narrow is-mobile is-centered">
+      <h1 class="title has-text-danger">
+        Calorie Counter
       </h1>
     </div>
   </section>
 
   
-  <div class="container mt-4">
+  <div class="container p-10 mt-10 box is-mobile">
     <!-- Form -->
 
-    <div>
+    <div class="columns is-mobile">
       <div>
-        <h5>Add Meal</h5>
         <form>
-          <div >
+          <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
             <label for="item-name" aria-placeholder="Enter meal">Meal</label>
-            <input id="item-name" type="text">
+            <input id="item-name" type="text" class="input is-danger is-rounded is-small"
+            style="width: 66%"
+            placeholder="Add a meal!">
           </div>
-          <div>
+          <div class="column flex-wrap has-text-weight-semibold is-narrow is-mobile is-centered">
             <label>Calories</label>
-            <input id="item-calories" type="number"placeholder="Add Calories">
-
+            <input id="item-calories" class="input is-danger is-rounded is-small"
+            style="width: 66%"
+            type="number"
+            placeholder="Input Calories!">
+          </div>
 
             <!--Buttons to save meals, delete meals, ect-->
           </div>
           <div>
-            <button id="add-meal">
+            <button id="add-meal" class="button is-danger is-light is-normal is-$white-ter">
               <i> </i>Add a Meal</button>
-            <button id="delete-all" type="button">
+            <button id="delete-all" class="button is-danger is-light is-normal is-$white-ter">
               <i> </i>Delete All</button>
           </div>
 
         </form>
       </div>
+
+
+
+    
+    <!-- List of items -->
+    <div>
+      <ul>
+      </ul>
     </div>
 
 
@@ -131,8 +143,8 @@
 
 <!-- test modal buttons -->
 
-<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button">Daily Report</button>
-<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button">Weekly Report</button>
+<button id="open-daily" data-target="daily-modal" class="js-modal-trigger button is-danger is-light is-normal is-$white-ter">Daily Report</button>
+<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-danger is-light is-normal is-$white-ter">Weekly Report</button>
 
 <!-- start of Daily Report modal -->
 
@@ -175,7 +187,7 @@
     </footer>
   </div>
 </div>
-
+  </div>
 <!-- links to js and 3rd party api's -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
