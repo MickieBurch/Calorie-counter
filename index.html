@@ -14,7 +14,7 @@
       // Draw the pie chart for Daily Report when Charts is loaded.
       google.charts.setOnLoadCallback(drawDailyChart);
       // Draw the pie chart for Weekly Report when Charts is loaded.
-      google.charts.setOnLoadCallback(drawWeeklyChart);
+      // google.charts.setOnLoadCallback(drawWeeklyChart);
 
       // Callback that draws the pie chart for Daily Report.
       function drawDailyChart(items = JSON.parse(localStorage.getItem('items'))) {
@@ -40,30 +40,30 @@
       }
 
       // Callback that draws the pie chart for Weekly Report.
-      function drawWeeklyChart(items = JSON.parse(localStorage.getItem('items'))) {
-        console.log(items);
-        // Create the data table for Weekly Report.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Day');
-        data.addColumn('number', 'Calories');
-        data.addRows([
-          ['Monday', 1500],
-          ['Tuesday', 1600],
-          ['Wednesday', 1650],
-          ['Thursday', 1600],
-          ['Friday', 1850],
-          ['Saturday', 2000],
-          ['Sunday', 2500]
-        ]);
-        // Set options for the Weekly Report pie chart.
-        var options = {title:'Total Calories Consumed per Day',
-                       width:400,
-                       height:300,
-                       pieHole: 0.4};
-        // Instantiate and draw the chart for the Weekly Report.
-        var chart = new google.visualization.PieChart(document.getElementById('weekly-report-div'));
-        chart.draw(data, options);
-      }
+      // function drawWeeklyChart(items = JSON.parse(localStorage.getItem('items'))) {
+      //   console.log(items);
+      //   // Create the data table for Weekly Report.
+      //   var data = new google.visualization.DataTable();
+      //   data.addColumn('string', 'Day');
+      //   data.addColumn('number', 'Calories');
+      //   data.addRows([
+      //     ['Monday', 1500],
+      //     ['Tuesday', 1600],
+      //     ['Wednesday', 1650],
+      //     ['Thursday', 1600],
+      //     ['Friday', 1850],
+      //     ['Saturday', 2000],
+      //     ['Sunday', 2500]
+      //   ]);
+      //   // Set options for the Weekly Report pie chart.
+      //   var options = {title:'Total Calories Consumed per Day',
+      //                  width:400,
+      //                  height:300,
+      //                  pieHole: 0.4};
+      //   // Instantiate and draw the chart for the Weekly Report.
+      //   var chart = new google.visualization.PieChart(document.getElementById('weekly-report-div'));
+      //   chart.draw(data, options);
+      // }
     </script> 
 </head>
 
@@ -119,7 +119,7 @@
     <div>
       <div>
           <h3>
-              <span id="total-calories"></span>
+              
             </h3>
       </div>
     </div>
@@ -129,15 +129,19 @@
       </ul>
     </div>
  
-<div>
-    <h2>Calorie Intake:</h2>
-    <h2>Calorie Goal: </h2>
+<div class="mb-3">
+    <h2 class="has-text-weight-bold">Calorie Intake: <span id="total-calories"></span></h2>
+    <h2 class="has-text-weight-bold">Calorie Goal: 
+      <input id="calorie-goal" class="input is-danger is-rounded is-small "
+      style="width: 20%"
+      type="number"
+      placeholder=""></h2>
 </div>
 
 <!-- test modal buttons -->
 
 <button id="open-daily" data-target="daily-modal" class="js-modal-trigger button is-outlined is-fullwidth is-danger is-normal is-$white-ter has-text-weight-bold">Daily Report</button>
-<button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-outlined is-fullwidth is-danger is-normal is-$white-ter has-text-weight-bold">Weekly Report</button>
+<!-- <button id="open-weekly" data-target="weekly-modal" class="js-modal-trigger button is-outlined is-fullwidth is-danger is-normal is-$white-ter has-text-weight-bold">Weekly Report</button> -->
 
 <!-- start of Daily Report modal -->
 
@@ -149,7 +153,6 @@
     </header>
     <section class="modal-card-body">
       <p id="todaysDate"></p>
-      Met Calorie Goal?</br>
       <p>Total Calories: <span id="daily-calories"></span></p>
       <!-- daily report chart -->
       <div id="daily-report-div" style="border: 1px solid #ccc"></div>
@@ -162,7 +165,7 @@
  </div>
 <!-- start of Weekly Report modal -->
 
-<div id="weekly-modal" class="modal">
+<!-- <div id="weekly-modal" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head has-background-danger">
@@ -172,7 +175,7 @@
       <p id="weekDate"></p>
       Date display?</br>
       Met Calorie Goal</br>
-      <!-- weekly report chart -->
+      <!-- weekly report chart 
       <div id="weekly-report-div" style="border: 1px solid #ccc"></div>
     </section>
     <footer class="modal-card-foot">
@@ -180,8 +183,8 @@
     </footer>
   </div>
 
-</div>
-  </div>
+</div> -->
+  
 <!-- links to js and 3rd party api's -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -91,15 +91,17 @@ function displayItems(){
 itemList.innerHTML = ""
   items.forEach((item)=>{
     var li = document.createElement("li");
-    li.innerText = "Meal Name:" +  item.itemName + " Calories: " + item.itemCalories;
+    li.innerText = "Meal: " +  item.itemName + "; Calories: " + item.itemCalories;
+    li.classList = "my-1";
     $('#item-calories').value = '';
     var deletebtn = document.createElement("button");
     deletebtn.value = item.itemName
     deletebtn.innerText = "delete"
-    var editBtn = document.createElement("button");
-    editBtn.innerText = "edit"
+    deletebtn.classList = " ml-2 button is-danger is-rounded is-small";
+    // var editBtn = document.createElement("button");
+    // editBtn.innerText = "edit"
     li.appendChild(deletebtn);
-    li.appendChild(editBtn);
+    // li.appendChild(editBtn);
     itemList.appendChild(li);
     deletebtn.addEventListener("click",function(event){
       event.preventDefault()
@@ -115,9 +117,9 @@ itemList.innerHTML = ""
       localStorage.setItem('items', JSON.stringify(items));
       displayItems()
     })
-    editBtn.addEventListener("click",function(){
-      console.log("edithit")
-    })
+    // editBtn.addEventListener("click",function(){
+    //   console.log("edithit")
+    // })
     calories = calories + parseInt(item.itemCalories);
   })
   console.log(typeof(calories));
@@ -133,16 +135,16 @@ dailyBtn.addEventListener("click", function() {
   dailyReport.classList.add('is-active');
 });
 // weekly open
-weeklyBtn.addEventListener("click", function() {
-  weeklyReport.classList.add('is-active');
-});
+// weeklyBtn.addEventListener("click", function() {
+//   weeklyReport.classList.add('is-active');
+// });
 // close modals
 dailyClose.addEventListener("click", function() {
   dailyReport.classList.remove('is-active');
 });
-weeklyClose.addEventListener("click", function() {
-  weeklyReport.classList.remove('is-active');
-});
+// weeklyClose.addEventListener("click", function() {
+//   weeklyReport.classList.remove('is-active');
+// });
 //When the page loads / refreshes
 document.addEventListener("DOMContentLoaded", function() {
   //
