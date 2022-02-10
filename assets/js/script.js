@@ -18,10 +18,27 @@ document.getElementById("delete-all").addEventListener("click", deleteAllMeals);
 //document.getElementById("back").addEventListener("click", back);
 var itemList = document.getElementById("item-list");
 // calorieninja calls
-function getInput() {
-var calorieReturn = document.getElementById('item-name').value;
+// function getInput() {
+// var calorieReturn = document.getElementById('item-name').value;
+// $.ajax({
+//   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
+//   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
+//   contentType: 'application/json',
+//   success: function(result) {
+//     console.log(result.items[0].calories);
+//     $("#item-calories").val(result.items[0].calories);
+//   },
+//   error: function ajaxError(jqXHR) {
+//   console.error('Error: ', jqXHR.responseText);
+// }});
+// }
+$("#todaysDate").html(moment().format("LL"));
+$("#weekDate").html('Current Week');
+function addMeal(event){
+  var calorieReturn = document.getElementById('item-name').value;
 $.ajax({
   method: 'GET', url: 'https://api.calorieninjas.com/v1/nutrition?query=' + calorieReturn,
+  async: false,
   headers: {'X-Api-Key': '5tmVmpAvLI1Z6qTF5q/1sw==sC1RwtgbCIjYwMaD'},
   contentType: 'application/json',
   success: function(result) {
@@ -31,11 +48,6 @@ $.ajax({
   error: function ajaxError(jqXHR) {
   console.error('Error: ', jqXHR.responseText);
 }});
-}
-$("#todaysDate").html(moment().format("LL"));
-$("#weekDate").html('Current Week');
-function addMeal(event){
-  getInput();
   event.preventDefault();
   mealName = document.getElementById("item-name").value;
   mealCalories = document.getElementById("item-calories").value;
