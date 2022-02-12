@@ -32,8 +32,23 @@ var itemList = document.getElementById("item-list");
 //   console.error('Error: ', jqXHR.responseText);
 // }});
 // }
-$("#todaysDate").html(moment().format("LL"));
+
+// moment variables
+var currentDay = moment().format("dddd");
+var date = moment().format("LL");
+console.log(date);
+var weekReset = moment().day(1).hour(0).minutes(0).seconds(0);
+console.log(weekReset);
+$("#todaysDate").html(currentDay + ', ' + date);
 $("#weekDate").html('Current Week');
+
+/*
+ check to see if you can dynamically create variable names
+ or
+ create object with day: currentDay, then either item objects or individual itemNames
+ and itemCalories 
+*/
+
 function addMeal(event){
   var calorieReturn = document.getElementById('item-name').value;
 $.ajax({
@@ -55,6 +70,10 @@ $.ajax({
     "itemName": mealName,
     "itemCalories": mealCalories
   }
+  // var day = {
+  //   "" + currentDay + "" : item
+  // }
+  console.log(day);
   //myStoreItem(item);
   StorageCtrl.storeItem(item);
   displayItems();
