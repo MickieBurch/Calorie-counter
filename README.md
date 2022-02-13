@@ -38,3 +38,14 @@ https://mickieburch.github.io/Calorie-counter/
 - Calorie Ninja API, 
 - Google Charts API, 
 - jQuery API
+
+
+## Screenshots
+Mobile First Design</br>
+![Mobile First Design](./assets/images/calorie_counter_mobile_design.png)</br>
+
+Dynamic Meal Tracking</br>
+![Dynamic Meal Tracking](./assets/images/calorie_counter_functionality.png)</br>
+
+Daily Reports With Google Charts</br>
+![Daily Reports With Google Charts](./assets/images/calorie_counter_chart.png)</br>
